@@ -32,7 +32,6 @@
         sv = "sudo nvim";
         v = "nvim";    
         cg = "sudo nix-collect-garbage";
-        niri = "niri --session -c $HOME/goat/configs/config.kdl";
         update-desktop = "sudo nixos-rebuild switch --impure --flake ~/goat#desktop";
         udate-laptop = "sudo nixos-rebuild switch --impure --flake ~/goat#laptop";
       };
