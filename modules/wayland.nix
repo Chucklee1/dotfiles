@@ -2,7 +2,7 @@
 
 {
   options = {
-    wayland.enable = lib.mkEnableOption = "enables wayland options";
+    wayland.enable = lib.mkEnableOption "enables wayland options";
   };
 
   config = lib.mkIf.config.module1.enable {
