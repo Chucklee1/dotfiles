@@ -12,23 +12,24 @@
   
   home.packages = with pkgs; [
     cmatrix lolcat htop cowsay 
-	vscode-fhs spotify firefox msgviewer
-	libgccjit rustc
+	  vscode-fhs spotify firefox msgviewer
+	  libgccjit rustc
   ];
               
   programs = {
 	git = {
 	  enable = true;
+    # use your own email and username
 	  userEmail = "cooperkang4@gmail.com";
 	  userName = "Chucklee1";
 	};
     kitty = {  
       enable = true;
       settings = {
-		scrollback_lines = 2000;
-		wheel_scroll_min_lines = 1;
+		    scrollback_lines = 2000;
+		    wheel_scroll_min_lines = 1;
         window_padding_width = 4;
-		confirm_os_window_close = 0;
+		    confirm_os_window_close = 0;
       };
       extraConfig = ''
 		     tab_bar_style fade
@@ -51,7 +52,7 @@
 
   home.sessionVariables = {
     EDITOR = "neovim";
-	NIXOS_OZONE_WL = "1";
+	  NIXOS_OZONE_WL = "1";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps 
     SDL_VIDEODRIVER = "wayland"; 
     MOZ_ENABLE_WAYLAND = "1";

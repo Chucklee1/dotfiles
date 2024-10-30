@@ -40,11 +40,4 @@
     };
   };
 }
-# toggleable modules eg:
-# options = {
-#  module1.enable = lib.mkEnableOption = "enable option 1";
-#};
 
-#config = lib.mkIf.config.module1.enable {
-# option1 = 5;
-# option2 = true;
