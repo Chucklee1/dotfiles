@@ -8,10 +8,10 @@
   config = lib.mkIf.config.module1.enable {
 
     # because rofi-wayland does not work well with niri
-    environment.systemPackages = with pkgs; {
+    environment.systemPackages = with pkgs; [
       niri
       fuzzel 
-    };
+    ];
 
     # xdg portal
     xdg.portal = {
