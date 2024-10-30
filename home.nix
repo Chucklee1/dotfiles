@@ -17,6 +17,11 @@
   ];
               
   programs = {
+	git = {
+	  enable = true;
+	  userEmail = "cooperkang4@gmail.com";
+	  userName = "Chucklee1";
+	};
     kitty = {  
       enable = true;
       settings = {
