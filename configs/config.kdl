@@ -49,6 +49,7 @@ layout {
         width 2
         active-color "#8fa1b3"
         inactive-color "#4f5b66"
+        inactive-color "#4f5b66"
     }
 }
 
@@ -94,11 +95,6 @@ binds {
     Mod+Shift+Right { move-column-right; }
     Mod+Shift+Home { move-column-to-first; }
     Mod+Shift+End  { move-column-to-last; }
-    // same just up down
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
     // mouse movement
     Mod+WheelScrollDown        cooldown-ms=150 { focus-column-right; }
     Mod+WheelScrollUp          cooldown-ms=150 { focus-column-left; }

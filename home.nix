@@ -9,6 +9,12 @@
     iconTheme.name = "Papirus-Dark";
     iconTheme.package = pkgs.papirus-icon-theme;
   };
+  
+  home.packages = with pkgs; [
+    cmatrix lolcat htop cowsay 
+	vscode-fhs spotify firefox msgviewer
+	libgccjit rustc
+  ];
               
   programs = {
     kitty = {  
@@ -33,13 +39,20 @@
         v = "nvim";    
         cg = "sudo nix-collect-garbage";
         update-desktop = "sudo nixos-rebuild switch --impure --flake ~/goat#desktop";
-        udate-laptop = "sudo nixos-rebuild switch --impure --flake ~/goat#laptop";
+        update-laptop = "sudo nixos-rebuild switch --impure --flake ~/goat#laptop";
       };
 		};
  	};
 
   home.sessionVariables = {
     EDITOR = "neovim";
+	NIXOS_OZONE_WL = "1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps 
+    SDL_VIDEODRIVER = "wayland"; 
+    MOZ_ENABLE_WAYLAND = "1";
+    XDG_SESSION_TYPE = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    GTK_CSD = "true";
   };
 
   # Let Home Manager install and manage itself.

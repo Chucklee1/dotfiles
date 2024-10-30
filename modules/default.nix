@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { lib, pkgs, config, inputs, ... }:
 
 {
@@ -193,7 +189,7 @@
     neovim networkmanagerapplet  
     
     # general apps 
-    geany gimp spotify firefox
+    geany gimp 
     
     # media support
     mpv imv ffmpeg v4l-utils
@@ -217,10 +213,7 @@
     wtype wev ydotool brightnessctl playerctl pavucontrol  
     
     # notifications 
-    libnotify  dunst
-    
-    # printig
-    neofetch cmatrix lolcat htop cowsay
+    libnotify  dunst neofetch 
     
     # paxs
     pkg-config nixfmt-rfc-style
@@ -231,7 +224,7 @@
     packages = with pkgs; [
       noto-fonts-emoji
       noto-fonts-cjk-sans
-      font-awesome
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ];
   };
 
@@ -243,16 +236,6 @@
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
     ];
-  };
-  
-  # enviorment variables 
-  environment.sessionVariables = { 
-    NIXOS_OZONE_WL = "1";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps 
-    SDL_VIDEODRIVER = "wayland"; 
-    MOZ_ENABLE_WAYLAND = "1";
-    XDG_SESSION_TYPE = "wayland";
-    CLUTTER_BACKEND = "wayland";
   };
   
   # system version
