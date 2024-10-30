@@ -49,7 +49,6 @@ layout {
         width 2
         active-color "#8fa1b3"
         inactive-color "#4f5b66"
-        inactive-color "#4f5b66"
     }
 }
 
