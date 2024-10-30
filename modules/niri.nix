@@ -12,7 +12,7 @@
       niri
       fuzzel 
     ];
-
+    
     # xdg portal
     xdg.portal = {
       enable = true;
