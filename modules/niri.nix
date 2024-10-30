@@ -2,7 +2,7 @@
 
 {
   options = {
-    niri.enable = lib.mkEnableOption = "enables niri wm";
+    niri.enable = lib.mkEnableOption "enables niri wm";
   };
 
   config = lib.mkIf.config.module1.enable {

@@ -2,11 +2,11 @@
 
 {
   options = {
-    hyprland.enable = lib.mkEnableOption = "enables hyprland wm";
+    hyprland.enable = lib.mkEnableOption "enables hyprland wm";
   };
 
   config = lib.mkIf.config.module1.enable {
-    
+
     # xwayland support :)
     programs.hyprland = {
       enable = true;
