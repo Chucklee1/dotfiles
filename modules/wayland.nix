@@ -62,9 +62,9 @@
   # Security / Polkit
   security = {
     rtkit.enable = true;
-    security.polkit.enable = true;
+    polkit.enable = true;
     polkit.package = pkgs.lxqt.policykit;
-    security.polkit.extraConfig = ''
+    polkit.extraConfig = ''
       polkit.addRule(function(action, subject) {
         if (
           subject.isInGroup("users")
@@ -80,7 +80,7 @@
         }
       })
     '';
-    security.pam.services.swaylock = {
+    pam.services.swaylock = {
       text = ''
         auth include login
       '';
