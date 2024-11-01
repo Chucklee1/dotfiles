@@ -12,7 +12,6 @@
   ];
 
   # global modules
-  wayland.enable = true;
   hyprland.enable = false;
   niri.enable = true;
 
