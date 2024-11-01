@@ -7,13 +7,7 @@
     ./radeon.nix
     ./theming.nix
     ./wayland.nix
-    ./niri.nix
-    ./hyprland.nix
   ];
-
-  # global modules
-  hyprland.enable = false;
-  niri.enable = true;
 
   # boot
   boot = {
@@ -86,7 +80,7 @@
 
   # printing 
   services.printing.enable = true;
-  
+
   # Optimization settings
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
