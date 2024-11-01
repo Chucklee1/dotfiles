@@ -5,7 +5,7 @@
     wayland.enable = lib.mkEnableOption "enables wayland options";
   };
 
-  config = lib.mkIf.config.module1.enable {
+  config = lib.mkIf config.wayland.enable {
 
     # specific services
     services = {
