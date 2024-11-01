@@ -1,13 +1,20 @@
 { lib, pkgs, config, ... }:
 
 {
-    virtualisation.libvirtd.enable = true;
-    programs.virt-manager.enable = true;
-    programs.dconf.enable = true;
-    programs.dconf.settings = {
-      "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
+    virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm.enable = true;
+        ovmf = {
+        enable = true;
+        packages = [(pkgs.OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+        }).fd];
+        };
     };
-};
+    };
+    programs.virt-manager.enable = true;
 }
