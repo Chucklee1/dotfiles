@@ -11,3 +11,58 @@
     option2 = true; 
   };
 }
+
+/* GENERAL TIPS 
+
+GENERAL
+    - if you want to disable a module like module {}
+      just add the "off" 
+      
+STARTUP
+    - spawn-at-startup "command" "-flag" "option"
+    - eg: spawm-at-startup "kitty" "-e" "nvim" 
+    
+KEYBINDS
+    - Most actions that you can bind here can also be invoked programmatically with
+      `niri msg action do-something`.
+
+    - key legend if needed:
+        - widows: up/j down/k left/h right/l
+        - workspaces: ctrl + up/u down/i
+        - Page_Up Page_Down 
+        - WheelScroll/Right/Left/Up/Down
+
+    command to move just a single window:
+        - Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
+
+    focus monitors if you have multiple monitors
+        - Mod+Shift+Left  { focus-monitor-left; }
+        - Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+
+INPUT ( all are {} types )
+    - mouse:
+        - natural-scroll
+        - accel-speed 0.2
+        - accel-profile "flat"
+        - scroll-method "no-scroll"
+      
+    - touchpad:
+        - dwt
+        - dwtp
+        - accel-speed 0.2
+        - accel-profile "flat"
+        - scroll-method "two-finger"
+        - disabled-on-external-mouse
+      
+    - trackpoint: 
+        - natural-scroll
+        - accel-speed 0.2
+        - accel-profile "flat"
+        - scroll-method "on-button-down"
+        - scroll-button 273
+        - middle-emulation
+
+UNUSED MODULES 
+    - animations {}
+*/
+
