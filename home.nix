@@ -44,8 +44,8 @@
         sv = "sudo nvim";
         v = "nvim";    
         cg = "sudo nix-collect-garbage";
-        update-desktop = "sudo nixos-rebuild switch --impure --flake ~/goat#desktop";
-        update-laptop = "sudo nixos-rebuild switch --impure --flake ~/goat#laptop";
+        update-desktop = "sudo nixos-rebuild switch --flake ~/goat#desktop --impure --show-trace";
+        update-laptop = "sudo nixos-rebuild switch --flake ~/goat#laptop --impure --show-trace";
       };
 		};
  	};
