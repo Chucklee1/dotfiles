@@ -25,6 +25,7 @@
     playerctl 
     pavucontrol 
     brightnessctl 
+    lxqt.lxqt-policykit
     # wayland
     wayland-utils
     egl-wayland 
@@ -57,7 +58,6 @@
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    polkit.package = pkgs.lxqt.policykit;
     polkit.extraConfig = ''
       polkit.addRule(function(action, subject) {
         if (
@@ -80,23 +80,6 @@
       '';
     };
   };
-
-  services.xserver = {
-      enable = true;
-      # Ensure that the Polkit agent starts with the session
-      windowManager.lxqt.enable = true;
-      session = {
-          # Start the LXQt Polkit agent
-          default = "lxqt";
-          # Include the polkit agent
-          sessionCommands = ''
-              eval "$(dbus-launch --sh-syntax --exit-with-session)"
-              # Start the LXQt Polkit agent
-              lxqt-policykit &
-          '';
-      };
-  };
-
 
   # xdg portal
   xdg.portal = {
