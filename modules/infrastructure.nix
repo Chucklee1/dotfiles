@@ -4,7 +4,7 @@
   # divider 
   services = {
     xserver = {
-      enable = false;
+      enable = true;
       xkb.layout = "us";
       xkb.variant = "";
     };
