@@ -53,6 +53,8 @@
   home.sessionVariables = {
     EDITOR = "neovim";
 	  NIXOS_OZONE_WL = "1";
+    GDK_BACKEND = "wayland";
+    QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # disable window decoration for qt apps 
     SDL_VIDEODRIVER = "wayland"; 
     MOZ_ENABLE_WAYLAND = "1";
