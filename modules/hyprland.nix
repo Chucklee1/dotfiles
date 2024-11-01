@@ -5,13 +5,21 @@
     hyprland.enable = lib.mkEnableOption "enables hyprland wm";
   };
 
-  config = lib.mkIf.config.module1.enable {
+  config = lib.mkIf config.hyprland.enable {
 
     # xwayland support :)
     programs.hyprland = {
       enable = true;
       xwayland = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      hyprland-protocols
+      hyprwayland-scanner
+      hyprcursor
+      hyprshot
+      rofi-wayland
+    ];
 
     # xdg portal
     xdg.portal = {

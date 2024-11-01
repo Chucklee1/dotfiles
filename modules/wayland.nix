@@ -7,9 +7,6 @@
 
   config = lib.mkIf.config.module1.enable {
 
-    # opengl - called graphics as of 24.11 smth
-    hardware.graphics.enable = true;
-
     # specific services
     services = {
       gnome.gnome-keyring.enable = true;
@@ -39,7 +36,6 @@
       };
     };
     environment.systemPackages = with pkgs; [
-      wayland-scanner 
       wayland-utils
       egl-wayland 
       qt5.qtwayland 

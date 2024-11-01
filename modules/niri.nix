@@ -5,10 +5,10 @@
     niri.enable = lib.mkEnableOption "enables niri wm";
   };
 
-  config = lib.mkIf.config.module1.enable {
+  config = lib.mkIf config.niri.enable {
 
-    # because rofi-wayland does not work well with niri
     environment.systemPackages = with pkgs; [
+      wayland-scanner 
       niri
       fuzzel 
     ];

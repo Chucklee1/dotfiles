@@ -13,25 +13,25 @@
 
   # global modules
   wayland.enable = true;
-  hyprland.enable = true;
+  hyprland.enable = false;
   niri.enable = true;
 
-  # boot loader
-  boot.loader ={
-    efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot";
-    grub.enable = true;
-    grub.efiSupport = true;
-    grub.device = "nodev";
-  };
-  
-  # other boot stuff
+  # boot
   boot = {
+    # grub boot
+    loader ={
+      efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot";
+      grub.enable = true;
+      grub.efiSupport = true;
+      grub.device = "nodev";
+    };
+    # use tmpfs instead of tmp
     tmp = {
       useTmpfs = false;
       tmpfsSize = "30%";
     };
-    # Appimage Support
+    # appimage support
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
       interpreter = "${pkgs.appimage-run}/bin/appimage-run";
@@ -51,7 +51,8 @@
   networking.networkmanager.enable = true; # networking
   time.timeZone = "America/Vancouver"; # time zone
   i18n.defaultLocale = "en_US.UTF-8"; # locales
-  
+
+  # divider go here
   services = {
     xserver = {
       enable = false;
@@ -66,26 +67,12 @@
     fstrim.enable = true;
     gvfs.enable = true;
     openssh.enable = true;
-    flatpak.enable = false;
-    printing.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
     rpcbind.enable = false;
     nfs.server.enable = false;
   };
 
-  # multi-device printing
-  hardware.sane = {
-    enable = true;
-    extraBackends = [ pkgs.sane-airscan ];
-    disabledDefaultBackends = [ "escl" ];
-  };
-
   # flatpaks
+  services.flatpak.enable = false;
   systemd.services.flatpak-repo = {
     path = [ pkgs.flatpak ];
     script = ''
@@ -93,15 +80,30 @@
     '';
   };
 
+  # Enable sound with pipewire.
+  hardware.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
   # Bluetooth Support
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  # printing 
+  services.printing.enable = true;
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.sane-airscan ];
+    disabledDefaultBackends = [ "escl" ];
+  };
 
   # Optimization settings
+  nixpkgs.config.allowUnfree = true;
   nix.settings = {
       auto-optimise-store = true;
       experimental-features = [
@@ -110,6 +112,7 @@
       ];
   };
 
+  # divider go here
   programs = {
     firefox.enable = false;
     thunar = {
@@ -120,10 +123,9 @@
       ];
     };
   };
-  
-  nixpkgs.config.allowUnfree = true;
-  users.mutableUsers = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.mutableUsers = true;
   users.users.goat = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "video" "lp" ];
@@ -131,6 +133,7 @@
     ignoreShellProgramCheck = true;
   };
 
+  # divider go here
   environment.systemPackages = with pkgs; [
     lm_sensors yad duf ncdu wget git ripgrep killall pciutils appimage-run
     unrar unzip file-roller tree p7zip
