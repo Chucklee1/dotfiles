@@ -15,6 +15,15 @@
 	  vscode-fhs spotify firefox msgviewer
 	  libgccjit rustc
   ];
+
+  # virtualization
+  dconf.settings = {
+  "org/virt-manager/virt-manager/connections" = {
+    autoconnect = ["qemu:///system"];
+    uris = ["qemu:///system"];
+  };
+};
+
               
   programs = {
 	git = {
