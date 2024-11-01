@@ -10,12 +10,6 @@
       openFirewall = true;
     };
     ipp-usb.enable = true;
-    syncthing = {
-      enable = false;
-      user = "goat";
-      dataDir = "/home/goat";
-      configDir = "/home/goat/.config/syncthing";
-    };
   };
 
   # programs/packages related to wayland
@@ -30,6 +24,7 @@
     };
   };
   environment.systemPackages = with pkgs; [
+    # global
     wayland-utils
     egl-wayland 
     qt5.qtwayland 
@@ -52,6 +47,14 @@
     wl-clipboard 
     cliphist 
     xclip 
+    # niri
+    wayland-scanner 
+    niri
+    fuzzel 
+    # hyprland
+    hyprcursor
+    hyprshot
+    rofi-wayland
   ];
 
   # Security / Polkit
@@ -79,6 +82,18 @@
     '';
   };
 
-  # xdg portals defined in specific wm
+  # xdg portal
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ 
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+    configPackages = [
+      pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
 }
 

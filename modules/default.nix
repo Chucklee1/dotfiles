@@ -70,15 +70,6 @@
     nfs.server.enable = false;
   };
 
-  # flatpaks
-  services.flatpak.enable = false;
-  systemd.services.flatpak-repo = {
-    path = [ pkgs.flatpak ];
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    '';
-  };
-
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   services.pipewire = {
@@ -95,12 +86,7 @@
 
   # printing 
   services.printing.enable = true;
-  hardware.sane = {
-    enable = true;
-    extraBackends = [ pkgs.sane-airscan ];
-    disabledDefaultBackends = [ "escl" ];
-  };
-
+  
   # Optimization settings
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
