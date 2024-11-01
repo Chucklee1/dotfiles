@@ -54,7 +54,6 @@
     niri
     fuzzel 
     # hyprland
-    hyprland-scanner
     hyprland-protocols
     hyprcursor
     hyprshot
