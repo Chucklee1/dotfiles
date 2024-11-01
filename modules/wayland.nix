@@ -2,15 +2,7 @@
 
 {
   # specific services
-  services = {
-    gnome.gnome-keyring.enable = true;
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
-    ipp-usb.enable = true;
-  };
+  services.gnome.gnome-keyring.enable = true;
 
   # programs/packages related to wayland
   programs = {
@@ -25,29 +17,31 @@
     hyprland.enable = true;
     hyprland.xwayland.enable = true;
   };
+
   environment.systemPackages = with pkgs; [
     # global
+    libnotify 
+    libsecret 
+    playerctl 
+    pavucontrol 
+    brightnessctl 
+    # wayland
     wayland-utils
     egl-wayland 
     qt5.qtwayland 
     qt6.qtwayland
-    waybar 
-    swww
-    libnotify 
-    dunst
-    libsecret 
+    wlogout 
     swayidle 
     swaylock-effects 
-    wlogout 
-    grim 
-    slurp
-    playerctl 
-    pavucontrol 
+    waybar 
+    swww
+    dunst
     wtype 
-    brightnessctl 
     wl-clipboard 
     cliphist 
     xclip 
+    grim 
+    slurp
     # niri
     wayland-scanner 
     niri
