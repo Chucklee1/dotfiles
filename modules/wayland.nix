@@ -22,6 +22,8 @@
       enable = true;
       enableSSHSupport = true;
     };
+    hyprland.enable = true;
+    hyprland.xwayland.enable = true;
   };
   environment.systemPackages = with pkgs; [
     # global
@@ -52,6 +54,8 @@
     niri
     fuzzel 
     # hyprland
+    hyprland-scanner
+    hyprland-protocols
     hyprcursor
     hyprshot
     rofi-wayland
