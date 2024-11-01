@@ -81,6 +81,22 @@
     };
   };
 
+  services.xserver = {
+      enable = true;
+      # Ensure that the Polkit agent starts with the session
+      windowManager.lxqt.enable = true;
+      session = {
+          # Start the LXQt Polkit agent
+          default = "lxqt";
+          # Include the polkit agent
+          sessionCommands = ''
+              eval "$(dbus-launch --sh-syntax --exit-with-session)"
+              # Start the LXQt Polkit agent
+              lxqt-policykit &
+          '';
+      };
+  };
+
 
   # xdg portal
   xdg.portal = {
