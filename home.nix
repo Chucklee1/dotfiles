@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "goat";
-  home.homeDirectory = "/home/goat";
-  home.stateVersion = "24.05";
+  home = {
+    username = "goat";
+    homeDirectory = "/home/goat";
+    stateVersion = "24.05";
+  };
    
   gtk = {
     iconTheme.name = "Papirus-Dark";
@@ -16,15 +18,17 @@
 	  libgccjit rustc
   ];
 
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
   # virtualization
   dconf.settings = {
-  "org/virt-manager/virt-manager/connections" = {
-    autoconnect = ["qemu:///system"];
-    uris = ["qemu:///system"];
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
   };
-};
-
-              
+             
   programs = {
 	git = {
 	  enable = true;
@@ -71,7 +75,4 @@
     CLUTTER_BACKEND = "wayland";
     GTK_CSD = "true";
   };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
